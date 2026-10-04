@@ -1,0 +1,122 @@
+/*
+ * Design tokens — the single source for color, type, spacing and motion.
+ * Light is the default; [data-theme='dark'] on <html> swaps the palette.
+ */
+:root {
+  /* Color — light */
+  --bg: #f4efe6;
+  --surface: #fbf8f2;
+  --surface-2: #ede6da;
+  --border: #ddd3c4;
+  --border-strong: #c9bca9;
+  --text: #1c1a17;
+  --text-muted: #6b645a;
+  --accent: #b4532a;
+  --accent-text: #9e4521; /* accent for small text: keeps 4.5:1 on --bg */
+  --accent-soft: #f1dfd3;
+  --on-accent: #fffaf4;
+  --success: #4f6b4a;
+  --warning: #a87b2c;
+  --danger: #a33a2e;
+  --danger-soft: #f3dcd6;
+
+  /* Earthy segment palette for the VLSM bar / table */
+  --seg-1: #b4532a; /* terracotta */
+  --seg-2: #6e7444; /* olive */
+  --seg-3: #b8892f; /* ochre */
+  --seg-4: #5e6b73; /* slate */
+  --seg-5: #9a6a55; /* clay */
+  --seg-6: #87997a; /* sage */
+  --seg-7: #7a5c3e; /* umber */
+  --seg-8: #8c8478; /* stone */
+
+  /* Diagram */
+  --node-fill: #fbf8f2;
+  --node-stroke: #1c1a17;
+  --node-muted: #6b645a;
+  --edge: #a99c88;
+  --edge-redundant: #b4532a;
+  --edge-wireless: #5e6b73;
+  --canvas: #fbf8f2;
+
+  /* Type */
+  --font-display: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Inter Tight Variable', 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-20: 1.25rem;
+  --fs-28: 1.75rem;
+  --fs-40: 2.5rem;
+  --fs-64: 4rem;
+  --fs-88: 5.5rem;
+  --lh-body: 1.6;
+  --lh-tight: 1.05;
+
+  /* Spacing — 8px scale (s-1 is the 4px half-step) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 40px;
+  --s-8: 48px;
+  --s-9: 64px;
+  --s-10: 80px;
+  --s-11: 96px;
+  --s-12: 128px;
+
+  /* Shape & motion */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --rule: 1px solid var(--border);
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 150ms;
+  --dur: 220ms;
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: 24px;
+  --nav-h: 64px;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #161412;
+  --surface: #1e1b18;
+  --surface-2: #27231f;
+  --border: #3a342d;
+  --border-strong: #4d453c;
+  --text: #efe8dc;
+  --text-muted: #a39a8c;
+  --accent: #e07a4f;
+  --accent-text: #e88a62;
+  --accent-soft: #3a2a21;
+  --on-accent: #161412;
+  --success: #8fa886;
+  --warning: #d1a556;
+  --danger: #e0806f;
+  --danger-soft: #3a221d;
+
+  --seg-1: #d0734b;
+  --seg-2: #9aa067;
+  --seg-3: #d2a650;
+  --seg-4: #8796a0;
+  --seg-5: #b98a73;
+  --seg-6: #a5b597;
+  --seg-7: #a07d5b;
+  --seg-8: #a89f92;
+
+  --node-fill: #1e1b18;
+  --node-stroke: #efe8dc;
+  --node-muted: #a39a8c;
+  --edge: #6b6155;
+  --edge-redundant: #e07a4f;
+  --edge-wireless: #8796a0;
+  --canvas: #1e1b18;
+
+  color-scheme: dark;
+}

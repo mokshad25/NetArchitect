@@ -1,0 +1,46 @@
+/* Address-space bar (shared by the landing page and the IP Plan tab). */
+.addr {
+  margin: 0 0 var(--s-5);
+}
+.addr-row {
+  display: flex;
+  gap: 2px;
+}
+.addr-row > span {
+  flex-basis: 0;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.addr-labels {
+  font-size: var(--fs-12);
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.addr-labels .is-free {
+  color: var(--text-muted);
+}
+.addr-bar {
+  height: 28px;
+}
+.addr-block {
+  border-radius: 3px;
+  min-width: 3px;
+}
+.addr-block.is-free {
+  background: var(--surface-2);
+  border: 1px dashed var(--border-strong);
+}
+.addr-offsets {
+  position: relative;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.addr-end {
+  position: absolute;
+  right: 0;
+  top: 0;
+  flex: none !important;
+}

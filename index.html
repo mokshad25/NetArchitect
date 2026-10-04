@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Set the theme before first paint (no flash): ?theme= → saved choice → system preference. -->
+    <script>
+      (function () {
+        var theme;
+        try {
+          var q = new URLSearchParams(location.search).get('theme');
+          theme = q === 'dark' || q === 'light' ? q : localStorage.getItem('na-theme');
+        } catch (e) {}
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <title>NetArchitect — Requirement-driven network topology designer</title>
+    <meta
+      name="description"
+      content="Requirement-driven network topology designer. Enter device counts and requirements; get a recommended topology, an interactive diagram, a plain-English explanation and a full VLSM IP plan."
+    />
+    <meta name="theme-color" content="#F4EFE6" />
+    <link rel="canonical" href="https://netarchitect.vercel.app/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="NetArchitect" />
+    <meta property="og:url" content="https://netarchitect.vercel.app/" />
+    <meta property="og:title" content="NetArchitect — Requirement-driven network topology designer" />
+    <meta
+      property="og:description"
+      content="Describe the needs; get a recommended topology, an interactive diagram, a plain-English explanation and a VLSM IP plan."
+    />
+    <meta property="og:image" content="https://netarchitect.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="NetArchitect: You describe the needs. NetArchitect designs the network." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NetArchitect — Requirement-driven network topology designer" />
+    <meta
+      name="twitter:description"
+      content="Describe the needs; get a recommended topology, an interactive diagram, a plain-English explanation and a VLSM IP plan."
+    />
+    <meta name="twitter:image" content="https://netarchitect.vercel.app/og-image.png" />
+  </head>
+  <body>
+    <noscript>NetArchitect needs JavaScript to design networks in your browser.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

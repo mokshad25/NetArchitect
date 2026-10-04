@@ -1,0 +1,443 @@
+/* Designer page (/app). */
+.designer {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  min-height: calc(100vh - var(--nav-h));
+  border-bottom: var(--rule);
+}
+
+/* ---------- Sidebar ---------- */
+.designer-side {
+  position: sticky;
+  top: var(--nav-h);
+  align-self: start;
+  height: calc(100vh - var(--nav-h));
+  overflow-y: auto;
+  border-right: var(--rule);
+  background: var(--surface);
+}
+.designer-form {
+  padding: var(--s-5);
+}
+.sheet-toggle {
+  display: none;
+}
+
+.req-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.form-group {
+  margin: 0;
+  padding: 0 0 var(--s-5);
+  border: 0;
+  border-bottom: var(--rule);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.form-group > legend {
+  padding: 0;
+  margin-bottom: var(--s-3);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-2) var(--s-3);
+}
+
+.dept-table {
+  display: grid;
+  gap: 6px;
+  font-size: var(--fs-14);
+}
+.dept-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  align-items: center;
+}
+.dept-table.cols-3 .dept-row {
+  grid-template-columns: minmax(0, 1.1fr) repeat(3, minmax(0, 1fr));
+}
+.dept-head span {
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+.dept-foot span {
+  font-size: var(--fs-12);
+  text-align: center;
+}
+.dept-foot span:first-child {
+  text-align: left;
+}
+.dept-foot .is-ok {
+  color: var(--success);
+}
+.dept-foot .is-bad {
+  color: var(--danger);
+}
+.input-sm {
+  height: 34px;
+  padding: 0 var(--s-2);
+  font-size: var(--fs-14);
+}
+
+.text-btn {
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent-text);
+  font-size: var(--fs-14);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.form-messages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.form-submit {
+  width: 100%;
+}
+.form-secondary {
+  display: flex;
+  gap: var(--s-2);
+}
+.form-secondary .btn {
+  flex: 1;
+}
+
+/* ---------- Main ---------- */
+.designer-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: var(--s-5) var(--s-6) var(--s-6);
+}
+.designer-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.designer-topology {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-4);
+}
+.designer-topology .label {
+  width: 100%;
+  margin: 0;
+}
+.designer-topology-name {
+  margin: 0;
+  font-size: var(--fs-28);
+  line-height: 1.15;
+}
+.designer-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.stale {
+  margin-top: var(--s-4);
+}
+.designer-panel {
+  flex: 1;
+  min-height: 0;
+  padding-top: var(--s-5);
+  transition: opacity var(--dur) var(--ease);
+  outline: none;
+}
+.designer-panel.is-busy {
+  opacity: 0.5;
+}
+.empty {
+  max-width: 640px;
+  padding: var(--s-10) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-4);
+}
+.empty .label,
+.empty .lede {
+  margin: 0;
+}
+
+/* ---------- Diagram ---------- */
+.diagram {
+  position: relative;
+  height: max(480px, calc(100vh - var(--nav-h) - 230px));
+}
+.diagram-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--canvas);
+  overflow: hidden;
+}
+.graph-frame {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+.graph-frame:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: 0;
+}
+.graph-canvas {
+  position: absolute;
+  inset: 0;
+}
+.graph-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+}
+.diagram-toolbar {
+  position: absolute;
+  top: var(--s-3);
+  left: var(--s-3);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius-sm);
+}
+.diagram-toolbar .icon-btn {
+  width: 32px;
+  height: 32px;
+}
+.toolbar-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+  margin: 0 2px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  border-top: var(--rule);
+  background: var(--surface);
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+}
+.drawer {
+  /* Overlays the canvas so opening it doesn't resize (and refit) the graph. */
+  position: absolute;
+  top: var(--s-3);
+  right: var(--s-3);
+  max-height: calc(100% - 100px);
+  z-index: 3;
+  width: 300px;
+  max-width: calc(100% - 24px);
+  overflow-y: auto;
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--s-4) var(--s-5) var(--s-5);
+  animation: drawer-in var(--dur) var(--ease);
+}
+@keyframes drawer-in {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+}
+.drawer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+}
+.drawer-head .label {
+  margin: 0;
+}
+.drawer-title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-20);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.drawer-sub {
+  margin: var(--s-5) 0 var(--s-2);
+}
+.drawer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.drawer-links button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: center;
+  gap: var(--s-3);
+  padding: 7px 0;
+  border: 0;
+  border-bottom: var(--rule);
+  background: none;
+  text-align: left;
+  font-size: var(--fs-14);
+  cursor: pointer;
+}
+.drawer-links button:hover .mono {
+  color: var(--accent-text);
+}
+.drawer-links .muted {
+  font-size: var(--fs-12);
+}
+
+/* ---------- IP plan ---------- */
+.usage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4) var(--s-8);
+  margin: 0 0 var(--s-5);
+}
+.usage dt {
+  margin-bottom: var(--s-1);
+}
+.usage dd {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 var(--s-1);
+}
+.usage-num {
+  font-family: var(--font-display);
+  font-size: var(--fs-40);
+  line-height: 1;
+  color: var(--accent);
+}
+.usage-free {
+  width: 100%;
+  font-size: var(--fs-12);
+  margin-top: var(--s-1);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1180px) {
+  .designer {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+  .designer-main {
+    padding: var(--s-5);
+  }
+}
+
+@media (max-width: 899px) {
+  .designer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .designer-side {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: var(--rule);
+  }
+  .sheet-toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    padding: var(--s-4) var(--gutter);
+    border: 0;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+  }
+  .sheet-toggle > span {
+    display: flex;
+    flex-direction: column;
+  }
+  .sheet-summary {
+    font-size: var(--fs-12);
+  }
+  .sheet-chevron {
+    transition: transform var(--dur) var(--ease);
+  }
+  .designer-side.is-open .sheet-chevron {
+    transform: rotate(180deg);
+  }
+  .designer-form {
+    display: none;
+    padding: 0 var(--gutter) var(--s-5);
+  }
+  .designer-side.is-open .designer-form {
+    display: block;
+  }
+  .designer-main {
+    padding: var(--s-5) var(--gutter);
+  }
+  .diagram {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+  .diagram-stage {
+    height: 62vh;
+    min-height: 380px;
+  }
+  .drawer {
+    position: static;
+    width: auto;
+    max-width: none;
+  }
+  .empty {
+    padding: var(--s-6) 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .legend {
+    gap: 6px var(--s-3);
+  }
+}
